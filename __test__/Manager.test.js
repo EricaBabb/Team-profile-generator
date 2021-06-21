@@ -1,10 +1,10 @@
 const Manager = require('../libs/Manager.js');
 
 test('creates a new team manager', () => {
-    const manager = new Manager('Erica');
+    const manager = new Manager();
 
-    expect(manager.name).toBe('Erica');
-    expect(manager.id).toBe('1');
-    expect(manager.email).toBe('ecamilebabb@gmail.com');
-    expect(manager.officeNumber).toBe('305');
+    expect(manager.name).toEqual(expect.any(String));
+    expect(manager.id).toEqual(expect.any(Number));
+    expect(manager.email).toEqual(expect.any(String));
+    expect(manager.officeNumber).toEqual(expect.any(String));
 });

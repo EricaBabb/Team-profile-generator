@@ -6,16 +6,12 @@ const Intern = require('./libs/Intern')
 const { writeFile, copyFile } = require('./libs/generate-html.js');
 
 //We want to use generateHtml function from the html-template/js so we must use REQUIRE it here
+
 const generateHtml = require('./src/html-template.js');
 
 //requiring the inquier npm package
 const inquirer = require('inquirer');
 const team = []
-// app.prototype.test = function() {
-//     this.manager.push(new Manager('Erica'));
-//     this.engineer.push(new Engineer('Jennah'));
-//     this.intern.push(new Intern('Jorge'));
-// }
 //This inquires about the team manager
 const promptManager = () => {
     return inquirer.prompt([
@@ -35,7 +31,7 @@ const promptManager = () => {
       }
     },
       {
-        type: 'input',
+        type: 'number',
         name: 'managerId',
         message: 'Enter the Team Manager employee ID (Required)',
         validate: managerInput => {
@@ -61,7 +57,7 @@ const promptManager = () => {
         }
       },
       {
-        type: 'input',
+        type: 'number',
         name: 'managerOffice',
         message: 'Enter the Team Manager office number (Required)',
         validate: officeInput => {
@@ -114,6 +110,8 @@ const promptManager = () => {
               .catch(err => {
                 console.log(err);
               });
+            // console.log(team.length)
+            // generateHtml()
         }
         
     })
@@ -143,7 +141,7 @@ const promptManager = () => {
         }
       },
       {
-        type: 'input',
+        type: 'number',
         name: 'engineerId',
         message: 'Provide an ID for your engineer employee (Required)',
         validate: engineerIdInput => {
@@ -215,7 +213,7 @@ const promptManager = () => {
         }
       },
       {
-        type: 'input',
+        type: 'number',
         name: 'internId',
         message: 'Provide an ID for your intern employee (Required)',
         validate: internIdInput => {
@@ -267,7 +265,22 @@ const promptManager = () => {
 promptManager();
 
 const createHTML = () => {
- return generateHtml(profileData);
+ return generateHtml(team);
 }
-  
-  
+
+const teamLength =  (team.length)
+
+
+// const generateHtml = team => {
+//       for (let i = 0; i < teamLength; i++){
+//         if (team[i].getRole === 'Manager') {
+//           return console.log('manager')
+//       }
+//         else if (team[i].getRole === 'Engineer'){
+//           return console.log('engineer')
+//         }
+//         else {
+//           return console.log('intern')
+//         }
+//       }
+// }
