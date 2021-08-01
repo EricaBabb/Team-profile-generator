@@ -7,7 +7,7 @@ const { writeFile, copyFile } = require('./libs/generate-html.js');
 
 //We want to use generateHtml function from the html-template/js so we must use REQUIRE it here
 
-const generateHtml = require('./src/html-template.js');
+const renderHtml = require('./src/html-template.js');
 
 //requiring the inquier npm package
 const inquirer = require('inquirer');
@@ -96,10 +96,8 @@ const promptManager = () => {
         }
 
         else {
-            createHTML()
-            .then(pageHTML => {
-                return writeFile(pageHTML);
-              })
+            const pageHTML = createHTML() 
+                return writeFile(pageHTML)
               .then(writeFileResponse => {
                 console.log(writeFileResponse);
                 return copyFile();
@@ -157,12 +155,12 @@ const promptManager = () => {
       {
         type: 'input',
         name: 'engineerEmail',
-        message: 'Provide an ID for your engineer employee (Required)',
+        message: 'Provide an email for your engineer employee (Required)',
         validate: engineerEmailInput => {
           if (engineerEmailInput) {
             return true;
           } else {
-            console.log('You need to enter an ID!');
+            console.log('You need to enter an email');
             return false;
           }
         }
@@ -229,12 +227,12 @@ const promptManager = () => {
       {
         type: 'input',
         name: 'internEmail',
-        message: 'Provide an ID for your intern employee (Required)',
+        message: 'Provide an email for your intern employee (Required)',
         validate: internEmailInput => {
           if (internEmailInput) {
             return true;
           } else {
-            console.log('You need to enter an ID!');
+            console.log('You need to enter an email!');
             return false;
           }
         }
@@ -265,22 +263,5 @@ const promptManager = () => {
 promptManager();
 
 const createHTML = () => {
- return generateHtml(team);
+ return renderHtml(team);
 }
-
-const teamLength =  (team.length)
-
-
-// const generateHtml = team => {
-//       for (let i = 0; i < teamLength; i++){
-//         if (team[i].getRole === 'Manager') {
-//           return console.log('manager')
-//       }
-//         else if (team[i].getRole === 'Engineer'){
-//           return console.log('engineer')
-//         }
-//         else {
-//           return console.log('intern')
-//         }
-//       }
-// }
