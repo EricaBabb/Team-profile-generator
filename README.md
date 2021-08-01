@@ -19,7 +19,7 @@ Clone this repository using git clone!
 ## Usage
 
 In the command line of your terminal, type "node index" to be prompted with questions
-![screenshot]()
+https://drive.google.com/file/d/1Cd-8oTtu7qhWdOpaIS0hULrN-3ybgE3b/view
 
 ## License
 
